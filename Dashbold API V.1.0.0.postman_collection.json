@@ -1,0 +1,412 @@
+{
+	"info": {
+		"_postman_id": "80a7e702-c9a8-4ff5-9922-3188cf6e7f7c",
+		"name": "Dashbold API V.1.0.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31118364"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"item": [
+				{
+					"name": "Create User with valid data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.statusCode(200);\r",
+									"});\r",
+									"\r",
+									"// const response = pm.response.json();\r",
+									"// const user = response.data.users.createUser;\r",
+									"\r",
+									"// pm.environment.set(\"userId\", user.id);\r",
+									"// pm.environment.set(\"userfirstName\", user.first_name);\r",
+									"// pm.environment.set(\"userEmail\", user.email);\r",
+									"\r",
+									"// console.log(user.id);\r",
+									"// console.log(user.first_name);\r",
+									"// console.log(user.email);\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has user data\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"\r",
+									"    // Retrieve environment variables\r",
+									"    const userId = pm.environment.get(\"userId\");\r",
+									"    const firstName = pm.environment.get(\"firstName\");\r",
+									"    const lastName = pm.environment.get(\"lastName\");\r",
+									"    const email = pm.environment.get(\"email\");\r",
+									"\r",
+									"    pm.expect(jsonData.data.users.createUser).to.have.property('id', userId);\r",
+									"    pm.expect(jsonData.data.users.createUser).to.have.property('first_name',firstName);\r",
+									"    pm.expect(jsonData.data.users.createUser).to.have.property('last_name', lastName);\r",
+									"    pm.expect(jsonData.data.users.createUser).to.have.property('email', email);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation Users {\r\n    users {\r\n        createUser(\r\n            user: {\r\n                 id: \"{{userId}}\"\r\n                first_name: \"{{firstName}}\"\r\n                last_name: \"{{lastName}}\"\r\n                email: \"{{email}}\"\r\n            }\r\n        ) {\r\n            id\r\n            first_name\r\n            last_name\r\n            email\r\n        }\r\n    }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{App_url}}/graphql",
+							"host": [
+								"{{App_url}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User with Already Existing UserId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.statusCode(200);\r",
+									"});\r",
+									"\r",
+									"// const response = pm.response.json();\r",
+									"// const user = response.data.users.createUser;\r",
+									"\r",
+									"// pm.environment.set(\"userId\", user.id);\r",
+									"// pm.environment.set(\"userfirstName\", user.first_name);\r",
+									"// pm.environment.set(\"userEmail\", user.email);\r",
+									"\r",
+									"// console.log(user.id);\r",
+									"// console.log(user.first_name);\r",
+									"// console.log(user.email);\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has user data\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"\r",
+									"    // Retrieve environment variables\r",
+									"    const userId = pm.environment.get(\"userId\");\r",
+									"    const firstName = pm.environment.get(\"firstName\");\r",
+									"    const lastName = pm.environment.get(\"lastName\");\r",
+									"    const email = pm.environment.get(\"email\");\r",
+									"\r",
+									"    pm.expect(jsonData.data.users.createUser).to.have.property('id', userId);\r",
+									"    pm.expect(jsonData.data.users.createUser).to.have.property('first_name',firstName);\r",
+									"    pm.expect(jsonData.data.users.createUser).to.have.property('last_name', lastName);\r",
+									"    pm.expect(jsonData.data.users.createUser).to.have.property('email', email);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation Users {\r\n    users {\r\n        createUser(\r\n            user: {\r\n                 id: \"{{userId}}\"\r\n                first_name: \"{{firstName}}\"\r\n                last_name: \"{{lastName}}\"\r\n                email: \"{{email}}\"\r\n            }\r\n        ) {\r\n            id\r\n            first_name\r\n            last_name\r\n            email\r\n        }\r\n    }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{App_url}}/graphql",
+							"host": [
+								"{{App_url}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User with Empty data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.statusCode(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation Users {\r\n    users {\r\n        createUser(\r\n            user: {\r\n                 id: \"{{EmptyuserId}}\"\r\n                first_name: \"{{EmptyfirstName}}\"\r\n                last_name: \"{{EmptylastName}}\"\r\n                email: \"{{EmptyemailId}}\"\r\n            }\r\n        ) {\r\n            id\r\n            first_name\r\n            last_name\r\n            email\r\n        }\r\n    }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{App_url}}/graphql",
+							"host": [
+								"{{App_url}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User With Invalid data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation Users {\r\n    users {\r\n        createUser(\r\n            user: {\r\n                 id: \"{{invaliduserId}}\"\r\n                first_name: \"{{firstName}}\"\r\n                last_name: \"{{lastName}}\"\r\n                email: \"{{email}}\"\r\n            }\r\n        ) {\r\n            id\r\n            first_name\r\n            last_name\r\n            email\r\n        }\r\n    }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{App_url}}/graphql",
+							"host": [
+								"{{App_url}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Update User",
+			"item": [
+				{
+					"name": "Update User With Valid data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.statusCode(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation Users {\r\n    users {\r\n        updateUser(\r\n            user: {\r\n                id: \"{{updateuserId}}\"\r\n                first_name: \"{{updatefirstName}}\"\r\n                last_name: \"{{updatelastName}}\"\r\n                email: \"{{updateemailId}}\"\r\n            }\r\n        ) {\r\n            id\r\n            first_name\r\n            last_name\r\n            email\r\n        }\r\n    }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{App_url}}/graphql",
+							"host": [
+								"{{App_url}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User With Invalid data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation Users {\r\n    users {\r\n        updateUser(\r\n            user: {\r\n                id: \"{{updateinvalidId}}\"\r\n                first_name: \"{{updatefirstName}}\"\r\n                last_name: \"{{updatelastName}}\"\r\n                email: \"{{updateemailId}}\"\r\n            }\r\n        ) {\r\n            id\r\n            first_name\r\n            last_name\r\n            email\r\n        }\r\n    }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{App_url}}/graphql",
+							"host": [
+								"{{App_url}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User With Empty data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation Users {\r\n    users {\r\n        updateUser(\r\n            user: {\r\n                id: \"{{EmptyuserId}}\"\r\n                first_name: \"{{EmptyfirstName}}\"\r\n                last_name: \"{{EmptylastName}}\"\r\n                email: \"{{EmptyemailId}}\"\r\n            }\r\n        ) {\r\n            id\r\n            first_name\r\n            last_name\r\n            email\r\n        }\r\n    }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{App_url}}/graphql",
+							"host": [
+								"{{App_url}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User With Same Id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation Users {\r\n    users {\r\n        updateUser(\r\n            user: {\r\n                id: \"{{EmptyuserId}}\"\r\n                first_name: \"{{EmptyfirstName}}\"\r\n                last_name: \"{{EmptylastName}}\"\r\n                email: \"{{EmptyemailId}}\"\r\n            }\r\n        ) {\r\n            id\r\n            first_name\r\n            last_name\r\n            email\r\n        }\r\n    }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{App_url}}/graphql",
+							"host": [
+								"{{App_url}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fetch User Data",
+			"item": [
+				{
+					"name": "Fetch User With Valid Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.statusCode(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query EntityQ {\r\n    entityQ {\r\n        user(id: \"16\") {\r\n            id\r\n            first_name\r\n            last_name\r\n            email\r\n            nickname\r\n        }\r\n    }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{App_url}}/graphql",
+							"host": [
+								"{{App_url}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch User With Invalid Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.statusCode(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query EntityQ {\r\n    entityQ {\r\n        user(id: \"16\") {\r\n            id\r\n            first_name\r\n            last_name\r\n            email\r\n            nickname\r\n        }\r\n    }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{App_url}}/graphql",
+							"host": [
+								"{{App_url}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
